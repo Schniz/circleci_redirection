@@ -9,5 +9,5 @@ jobs:
       - run: shards install
       - run: shards build --production --static
       - store_artifacts:
-          path: circleci_redirection
+          path: bin/circleci_redirection
           destination: /
