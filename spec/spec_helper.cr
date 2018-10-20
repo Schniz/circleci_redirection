@@ -1,2 +1,2 @@
 require "spec"
-require "../src/circleci_redirection"
+require "../src/circleci_redirection/*"

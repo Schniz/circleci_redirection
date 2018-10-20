@@ -1,6 +1,3 @@
-# TODO: Write documentation for `CircleciRedirection`
-module CircleciRedirection
-  VERSION = "0.1.0"
+require "./circleci_redirection/web"
 
-  # TODO: Put your code here
-end
+CircleciRedirection::Web.run!
