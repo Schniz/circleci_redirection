@@ -1,9 +1,15 @@
 require "./fetch_artifacts"
 require "./search_artifact"
 require "./wildcard_string"
+require "./markdown_to_html"
 require "kemal"
+require "markdown"
 
 module CircleciRedirection
+  get "/" do |ctx|
+    MarkdownToHtml.grip("README.md")
+  end
+
   get "/wildcard/github/:repo_owner/:repo/:branch/*path" do |ctx|
     vcs = "github"
     branch = ctx.params.url["branch"]
@@ -14,7 +20,7 @@ module CircleciRedirection
     artifacts = FetchArtifacts.perform(vcs: vcs, user: repo_owner, repo: repo, branch: branch)
     redirect_url = SearchArtifact.new(artifacts).find!(path).url
     ctx.redirect redirect_url
-  rescue e: FetchArtifacts::BuildNotFound | SearchArtifact::FileNotFound
+  rescue e : FetchArtifacts::BuildNotFound | SearchArtifact::FileNotFound
     halt ctx, status_code: 404, response: e.message
   end
 
@@ -28,7 +34,7 @@ module CircleciRedirection
     artifacts = FetchArtifacts.perform(vcs: vcs, user: repo_owner, repo: repo, branch: branch)
     redirect_url = SearchArtifact.new(artifacts).find!(path).url
     ctx.redirect redirect_url
-  rescue e: FetchArtifacts::BuildNotFound | SearchArtifact::FileNotFound
+  rescue e : FetchArtifacts::BuildNotFound | SearchArtifact::FileNotFound
     halt ctx, status_code: 404, response: e.message
   end
 
