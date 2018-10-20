@@ -8,6 +8,10 @@ targets:
   circleci_redirection:
     main: src/circleci_redirection.cr
 
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+
 crystal: 0.26.1
 
 license: MIT
