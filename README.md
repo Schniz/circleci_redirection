@@ -1,4 +1,5 @@
-# [CircleCI Artifact Redirection](https://github.com/schniz/circleci_redirection)
+# [CircleCI Artifact Redirection](https://circleci-artifacts.now.sh)
+> [See the source!](https://github.com/Schniz/circleci_redirection)
 
 This service redirects you to the latest build artifacts in CircleCI.
 It can help you use Circle CI's artifact system to provide binaries or even serve
