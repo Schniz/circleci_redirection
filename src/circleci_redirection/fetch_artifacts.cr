@@ -4,6 +4,7 @@ require "./artifact"
 module CircleciRedirection
   class FetchArtifacts
     class BuildNotFound < Exception; end
+
     BASE_URL = "https://circleci.com/api/v1.1/project"
 
     getter vcs, user, repo, branch, base_url
