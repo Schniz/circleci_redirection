@@ -1,0 +1,13 @@
+name: circleci_redirection
+version: 0.1.0
+
+authors:
+  - Gal Schlezinger <gal@spitfire.co.il>
+
+targets:
+  circleci_redirection:
+    main: src/circleci_redirection.cr
+
+crystal: 0.26.1
+
+license: MIT
