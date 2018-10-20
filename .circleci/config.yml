@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: crystallang/crystal
+    steps:
+      - run: apt-get update && apt-get install python-pip -y && pip install -U grip
+      - checkout
+      - run: shards install
+      - run: shards build --production --static
+      - store_artifacts:
+          path: circleci_redirection
+          destination: /
